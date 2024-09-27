@@ -28,7 +28,7 @@ Puppet::Type.type(:datacat_collector).provide(:datacat_collector) do
       vars = Puppet_X::Richardc::Datacat_Binding.new(data, resource[:template])
 
       debug "Applying template #{@resource[:template]}"
-      template = ERB.new(@resource[:template_body] || '', trim_mode:, '-')
+      template = ERB.new(@resource[:template_body] || '', trim_mode: '-')
       template.filename = @resource[:template]
       content = template.result(vars.get_binding)
     end
